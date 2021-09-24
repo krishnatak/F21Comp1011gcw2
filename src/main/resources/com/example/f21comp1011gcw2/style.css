@@ -1,0 +1,13 @@
+.root{
+    -fx-background-color: #607088;
+    -fx-font-size: 24;
+}
+#vbox{
+    -fx-min-width: 400;
+}
+#heading{
+    -fx-font-size: 36;
+    -fx-font-family: Algerian;
+    -fx-alignment: center;
+
+}
