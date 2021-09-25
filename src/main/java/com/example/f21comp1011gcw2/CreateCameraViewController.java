@@ -97,14 +97,14 @@ public class CreateCameraViewController implements Initializable {
            String model = this.modelTextArea.getText();
            ArrayList<String> lenses = new ArrayList<>();
            lenses.addAll(Arrays.asList("50-80 F10", "20-45 F30", "40-70 F50"));
-           int mp = 34;
-           //int mp = this.mpSpinner.getValue();
-           //double price = Double.parseDouble(this.priceTextArea.getText());
+
+           int mp = mpSpinner.getValue();
+           double price = priceSlider.getValue();
            boolean digital = this.digitalCheckbox.isSelected();
            boolean mirrorLens = this.mirrorglensCheckBox.isSelected();
 
-           //Camera camera1 = new Camera(make, model,lenses,mp,price,digital,mirrorLens);
-           //this.msgLabel.setText("Camera Created : "+camera1);
+           Camera camera1 = new Camera(make, model,lenses,mp,price,digital,mirrorLens);
+           this.msgLabel.setText("Camera Created : "+camera1);
        }catch (Exception e)
        {
            this.msgLabel.setText(e.getMessage());
