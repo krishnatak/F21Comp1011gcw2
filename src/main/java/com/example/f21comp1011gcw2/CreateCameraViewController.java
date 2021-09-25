@@ -45,15 +45,27 @@ public class CreateCameraViewController implements Initializable {
         List<String> cameraMakes = Arrays.asList("Canon","Nikon","Sony");
     makeComboBox.getItems().addAll(cameraMakes);
 
+    //customising slider
+        priceSlider.setMin(300);
+        priceSlider.setMax(900);
+        priceSlider.setValue(450);
+        priceLabel.setText(String.format("$%.2f",priceSlider.getValue()));
+
     // making an inner class and refering to it
         //priceSlider.valueProperty().addListener(new PriceChangeListener2());
 
     //creating an anonymous inner class
-        priceSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
-                priceLabel.setText(String.format("$%.2f",newValue));
-            }
+//        priceSlider.valueProperty().addListener(new ChangeListener<Number>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+//                priceLabel.setText(String.format("$%.2f",newValue));
+//            }
+//        });
+
+        //slider using lambda expression
+
+        priceSlider.valueProperty().addListener((observableValue,oldValue,newValue) -> {
+            priceLabel.setText(String.format("$%.2f",newValue));
         });
 
     }
