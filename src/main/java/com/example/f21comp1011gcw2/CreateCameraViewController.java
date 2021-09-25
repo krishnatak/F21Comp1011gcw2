@@ -51,7 +51,8 @@ public class CreateCameraViewController implements Initializable {
         priceSlider.setValue(450);
         priceLabel.setText(String.format("$%.2f",priceSlider.getValue()));
 
-    // making an inner class and refering to it
+
+    // making an inner class and referring to it
         //priceSlider.valueProperty().addListener(new PriceChangeListener2());
 
     //creating an anonymous inner class
@@ -67,6 +68,24 @@ public class CreateCameraViewController implements Initializable {
         priceSlider.valueProperty().addListener((observableValue,oldValue,newValue) -> {
             priceLabel.setText(String.format("$%.2f",newValue));
         });
+
+        // configure thw spinner to work with  integer in the range of 5-75
+        // the arguements are min , max, default , step
+
+            SpinnerValueFactory<Integer> spinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5,50,15,5);
+            mpSpinner.setValueFactory(spinnerValueFactory);
+            mpSpinner.setEditable(true);
+            // to set limitation on imput on mpspiiner textfield
+            // now user can only type integers in field
+            TextField spinnerTextField = mpSpinner.getEditor();
+            spinnerTextField.textProperty().addListener(((observableValue, oldValue, newValue) -> {
+                try{
+                    Integer.parseInt(newValue);
+                }catch (Exception e)
+                {
+                    spinnerTextField.setText(oldValue);
+                }
+            }));
 
     }
 
